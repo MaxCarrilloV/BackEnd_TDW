@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\InteraccionController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\PerroController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,4 +17,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
+});
+
+Route::prefix('/perro')->group(function () use ($router) {
+    $router->post('registrar', [PerroController::class, 'createPerro']);
+    $router->get('listar',[PerroController::class, 'listarPerros']);
+    $router->get('ver/{perro}',[PerroController::class, 'verPerro']);
+    $router->post('edit/{perro}', [PerroController::class, 'updatePerro']);
+    $router->delete('eliminar/{perro}',[PerroController::class, 'eliminarPerro']);
+});
+
+Route::prefix('/interaccion')->group(function () use ($router) {
+    $router->post('registrar', [InteraccionController::class, 'createInteraccion']);
 });
