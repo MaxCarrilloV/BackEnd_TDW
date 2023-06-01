@@ -15,10 +15,6 @@ use App\Http\Controllers\PerroController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::prefix('/perro')->group(function () use ($router) {
     $router->post('registrar', [PerroController::class, 'createPerro']);
     $router->get('listar',[PerroController::class, 'listarPerros']);

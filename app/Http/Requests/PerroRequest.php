@@ -12,7 +12,7 @@ class PerroRequest extends FormRequest
         return [
             "nombre" => "required|unique:perro|string",
             "foto" => "required|unique:perro|url",
-            "descripcion" => "required|unique:perro|string",
+            "descripcion" => "nullable|unique:perro|string",
         ];
     }
 

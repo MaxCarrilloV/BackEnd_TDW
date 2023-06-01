@@ -10,8 +10,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('interaccion', function (Blueprint $table) {
-            $table->unsignedBigInteger('perro_candidato_id');
-            $table->foreign('perro_candidato_id')->references('id')->on('perro');
+            $table->unsignedBigInteger('perro_candidato_id')->unique();
+            $table->foreign('perro_candidato_id')->references('id')->on('perro')->onDelete('cascade');
         });
     }
 
