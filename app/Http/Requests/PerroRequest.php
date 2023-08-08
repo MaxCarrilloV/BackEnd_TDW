@@ -10,9 +10,10 @@ class PerroRequest extends FormRequest
     public function rules()
     {
         return [
-            "nombre" => "required|unique:perro|string",
-            "foto" => "required|unique:perro|url",
-            "descripcion" => "nullable|unique:perro|string",
+            "nombre" => "required|unique:perro,nombre|string",
+            "foto" => "nullable|string:perro|string",
+            "descripcion" => "nullable|string:perro|string",
+            'sexo' => 'required|string:perro|in:macho,hembra',
         ];
     }
 

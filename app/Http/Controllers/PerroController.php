@@ -8,6 +8,7 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Log;
+use PhpParser\Node\Stmt\Label;
 use Spatie\FlareClient\Http\Response as HttpResponse;
 class PerroController extends Controller
 {
@@ -18,6 +19,7 @@ class PerroController extends Controller
             $perro->nombre = $request->nombre;
             $perro->foto = $request->foto;
             $perro->descripcion= $request->descripcion;
+            $perro->sexo = $request->sexo;
             $perro->save();
 
             return response()->json(["perro" => $perro], Response::HTTP_OK);
